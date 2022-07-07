@@ -2,17 +2,21 @@ package hello.hellospring.service;
 
 import hello.hellospring.domain.Member;
 import hello.hellospring.repository.MemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 // Service는 Business에 의존적으로 설계한다.
 // ctrl + shift + t : jUnit Test 파일을 만든다.
+@Service
 public class MemberService {
 //    private final MemberRepository memberRepository = new MemoryMemberRepository();
     // new 해서 생성하는 것이 아니라 외부에서 넣어주도록 constructor를 생성해라.
     private final MemberRepository memberRepository;
     // MemberService 입장에서 new 해서 사용하지 않고 외부에서 memberRepository를 넣어준다.
     // 이것이 DI.
+    @Autowired
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
